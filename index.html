@@ -29,7 +29,7 @@
             </p>
         </section>
         <section class="section__account">
-            <form action="" method="post" class="form__sign-up">
+            <form data-form action="" method="post" class="form__sign-up">
 
                 <fieldset>
                     <legend>Let's do this!</legend>
@@ -54,7 +54,7 @@
                             <input type="tel" inputmode="numeric" name="phone-number" id="phone-number">
                         </div>
                     </div>
-                    <div class="form__group">
+                    <div data-password-group class="form__group">
                         <div class="form__input password-input">
                             <label for="password">PASSWORD <span aria-label="required">*</span></label>
                             <input data-password type="password" name="password" id="password" minlength="8"
@@ -73,7 +73,8 @@
 
                         <div class="form__input password-input">
                             <label for="confirm-password">CONFIRM PASSWORD <span aria-label="required">*</span></label>
-                            <input data-password type="password" name="confirm-password" id="confirm-password" required>
+                            <input data-password type="password" name="confirm-password" id="confirm-password"
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                             <span class="toggle-password">
                                 <img class="toggle-password-icon" src="/assets/images/eye-off.svg"
                                     alt="Toggle Password Visibility">

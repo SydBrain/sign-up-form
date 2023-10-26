@@ -79,11 +79,11 @@ legend {
     outline: solid 3px #a2c2ec;
 }
 
-.form__input input.touched:valid {
+.form__input input.touched.valid {
     outline: solid 3px #a2ecba;
 }
 
-.form__input input.touched:invalid {
+.form__input input.touched.invalid {
     outline: solid 3px #eca2a2;
 }
 
@@ -126,7 +126,7 @@ legend {
 }
 
 .form__submit button:disabled {
-    cursor: none;
+    cursor: default;
     background-color: #909090;
     color: #545454;
 }
@@ -137,4 +137,8 @@ legend {
 
 .form__required-note {
     color: #757575;
+}
+
+.helper-text-negative {
+    color: #eca2a2;
 }
