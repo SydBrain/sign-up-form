@@ -7,16 +7,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmPasswordInputElement = document.getElementById("confirm-password");
     const togglePasswordIcons = document.querySelectorAll('.toggle-password-icon');
 
+    const emailInputElement = document.getElementById("email");
+
     // Event Listeners
     togglePasswordIcons.forEach(passwordIcon => {
         passwordIcon.addEventListener('click', togglePasswordVisibility);
     });
 
+    form.addEventListener("focusout", (event) => {
+        markAsTouched(event.target);
+
+        // THINK OF A WAY TO GENERALIZE VALIDATION!
+    })
+
+    emailInputElement.addEventListener("focusout", () => {
+        const email = emailInputElement.value;
+
+        if (!isValid(emailInputElement)) {
+            displayErrorMessage(emailInputElement, "Invalid email format");
+            markAsInvalid(emailInputElement);
+        } else {
+            deleteErrorMessage(emailInputElement);
+            markAsValid(emailInputElement);
+        }
+    })
+
     passwordFormGroup.addEventListener("focusout", (event) => {
         const password = passwordInputElement.value;
         const confirmPassword = confirmPasswordInputElement.value;
-
-        markAsTouched(event.target);
 
         if (event.target === passwordInputElement || event.target === confirmPasswordInputElement) {
             if (!isValid(passwordInputElement)) {
