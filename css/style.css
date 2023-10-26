@@ -27,7 +27,7 @@ main {
     justify-content: center;
     background: linear-gradient(180deg, rgb(30, 30, 30) 65%, #2a2a2a);
     width: 60%;
-    padding: 5%;
+    padding: 5rem;
     gap: 5rem;
 }
 
@@ -63,6 +63,7 @@ legend {
     margin: 0.5rem 0;
     display: flex;
     flex-direction: column;
+    width: 50%;
 }
 
 .form__input input {
@@ -94,6 +95,21 @@ legend {
     margin: 1.5rem 0;
 }
 
+.password-input {
+    position: relative;
+}
+
+.password-input input {
+    padding-right: 1rem;
+}
+
+.password-input .toggle-password {
+    cursor: pointer;
+    position: absolute;
+    top: 40px;
+    right: 1rem;
+}
+
 .form__submit button {
     cursor: pointer;
     border: none;
@@ -107,6 +123,16 @@ legend {
 .form__submit button:hover {
     color: #a2c2ec;
     background-color: white;
+}
+
+.form__submit button:disabled {
+    cursor: none;
+    background-color: #909090;
+    color: #545454;
+}
+
+.form__helper-text {
+    color: #909090;
 }
 
 .form__required-note {

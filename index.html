@@ -55,21 +55,34 @@
                         </div>
                     </div>
                     <div class="form__group">
-                        <div class="form__input">
+                        <div class="form__input password-input">
                             <label for="password">PASSWORD <span aria-label="required">*</span></label>
-                            <input type="password" name="password" id="password" minlength="8"
+                            <input data-password type="password" name="password" id="password" minlength="8"
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                 required>
+                            <span class="toggle-password">
+                                <img class="toggle-password-icon" src="/assets/images/eye-off.svg"
+                                    alt="Toggle Password Visibility">
+                            </span>
+                            <p class="form__helper-text">
+                                Must contain at least one number, one uppercase and
+                                lowercase letter, and at least 8 or more characters
+                            </p>
                         </div>
-                        <div class="form__input">
+
+                        <div class="form__input password-input">
                             <label for="confirm-password">CONFIRM PASSWORD <span aria-label="required">*</span></label>
-                            <input type="password" name="confirm-password" id="confirm-password" required>
+                            <input data-password type="password" name="confirm-password" id="confirm-password" required>
+                            <span class="toggle-password">
+                                <img class="toggle-password-icon" src="/assets/images/eye-off.svg"
+                                    alt="Toggle Password Visibility">
+                            </span>
                         </div>
                     </div>
                     <div class="form__submit">
                         <p class="form__required-note">Fields marked with an asterisk (*) are required.</p>
-                        <button type="submit" id="submit-button">Create Account</button>
+                        <button type="submit" id="submit-button" disabled>Create Account</button>
                         <p>
                             Already have an account? <a id="login-button" href="">Log in</a>
                         </p>
