@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function togglePasswordIcon(inputType, passwordIcon) {
-        const iconPath = inputType === "password" ? "/assets/images/eye-off.svg" : "/assets/images/eye.svg";
+        const iconPath = inputType === "password" ? "../assets/images/eye-off.svg" : "../assets/images/eye.svg";
         passwordIcon.setAttribute("src", iconPath);
     }
 
