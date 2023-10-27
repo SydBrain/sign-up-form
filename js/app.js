@@ -16,20 +16,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("focusout", (event) => {
         markAsTouched(event.target);
-
-        // THINK OF A WAY TO GENERALIZE VALIDATION!
+        if (!isValid(event.target)) {
+            markAsInvalid(event.target);
+        } else {
+            markAsValid(event.target);
+        }
+        updateSubmitButtonState();
     })
 
     emailInputElement.addEventListener("focusout", () => {
-        const email = emailInputElement.value;
-
         if (!isValid(emailInputElement)) {
             displayErrorMessage(emailInputElement, "Invalid email format");
-            markAsInvalid(emailInputElement);
         } else {
             deleteErrorMessage(emailInputElement);
-            markAsValid(emailInputElement);
         }
+        updateSubmitButtonState();
     })
 
     passwordFormGroup.addEventListener("focusout", (event) => {
@@ -37,20 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const confirmPassword = confirmPasswordInputElement.value;
 
         if (event.target === passwordInputElement || event.target === confirmPasswordInputElement) {
-            if (!isValid(passwordInputElement)) {
-                displayErrorMessage(passwordInputElement, "Invalid Password");
-                markAsInvalid(passwordInputElement);
-            } else {
-                markAsValid(passwordInputElement);
-            }
-
-            if (!isValid(confirmPasswordInputElement)) {
-                displayErrorMessage(confirmPasswordInputElement, "Invalid Password");
-                markAsInvalid(confirmPasswordInputElement);
-            } else {
-                markAsValid(confirmPasswordInputElement);
-            }
-
             // Check if the passwords match
             if (!doPasswordsMatch(password, confirmPassword)) {
                 displayErrorMessage(confirmPasswordInputElement, "Passwords do not match!");
@@ -63,8 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 markAsValid(confirmPasswordInputElement);
             }
         }
+        updateSubmitButtonState();
+    });
 
-    })
 
     // Initialization
     resetForm();
@@ -107,6 +95,22 @@ document.addEventListener("DOMContentLoaded", () => {
         return password === confirmPassword;
     }
 
+    function isFormValid() {
+        const isValidEmail = isValid(emailInputElement);
+        const isValidPassword = isValid(passwordInputElement) && isValid(confirmPasswordInputElement) &&
+            doPasswordsMatch(passwordInputElement.value, confirmPasswordInputElement.value);
+        return isValidEmail && isValidPassword;
+    }
+
+    function updateSubmitButtonState() {
+        const submitButton = document.getElementById('submit-button');
+        if (isFormValid()) {
+            submitButton.removeAttribute('disabled');
+        } else {
+            submitButton.setAttribute('disabled', 'true');
+        }
+    }
+
     function isValid(inputElement) {
         return inputElement.checkValidity();
     }
@@ -127,5 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function resetForm() {
         form.reset();
+        updateSubmitButtonState();
     }
 });

@@ -28,7 +28,7 @@ main {
     background: linear-gradient(180deg, rgb(30, 30, 30) 65%, #2a2a2a);
     width: 60%;
     padding: 5rem;
-    gap: 5rem;
+    gap: 2.5rem;
 }
 
 a {
@@ -141,4 +141,5 @@ legend {
 
 .helper-text-negative {
     color: #eca2a2;
+    margin: 0.5rem;
 }
